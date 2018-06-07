@@ -10,17 +10,32 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+
+    // 配置代理
+    proxyTable: {
+      "/proxy": {
+        target: "http://m.kugou.com", // 当匹配到/proxy/rank/list?json=true时，会把/proxy替换成http://m.kugou.com/rank/list?json=true
+        secure: false, // 不开启https
+        changeOrigin: true, // 是否跨域
+        pathRewrite: {
+          "^/proxy": ""   // 重写路径，当我们定义了一个字符串，如api时，请求路径会被重写为http://m.kugou.com/api/rank/list?json=true,这里我们为空就可以了
+        },
+        headers: { // 设置请求头，模拟手机端发送请求
+          "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36"
+        }
+      }
+    },
+
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    port: 6080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
