@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-
-    <mt-header fixed title="固定在顶部"></mt-header>
+    <mt-header>
+      <router-link to="/" slot="left">
+        <mt-button icon="back">返回</mt-button>
+      </router-link>
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
 
     <!-- CNavBar -->
     <router-view name="nav"/>
