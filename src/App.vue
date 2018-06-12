@@ -25,8 +25,9 @@ import axios from 'axios'
 export default {
   name: 'App',
   created () {
-    axios('/proxy/rank/list?json=true').then((resp) => {
-      console.log(resp)
+    console.log(this)
+    this.$http('/rank/list?json=true').then((resp) => {
+      console.log('222', resp)
     })
   }
 }
