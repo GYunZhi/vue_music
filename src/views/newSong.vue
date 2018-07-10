@@ -6,12 +6,6 @@
 
 <script>
 export default {
-  name: 'NewSong',
-  data () {
-    return {
-
-    }
-  }
 }
 </script>
 

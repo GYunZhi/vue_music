@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "less": "^3.5.3",
+    "less-loader": "^4.1.0",
     "mint-ui": "^2.2.13",
+    "standard": "^11.0.1",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1",

@@ -1,59 +1,52 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import NewSong from '@/views/newSong/new-song'
-import Rank from '@/views/rank/rank'
-import Plist from '@/views/plist/plist'
-import Singer from '@/views/singer/singer'
-import Search from '@/views/search/search'
-
-import CNavBar from '@/components/CNavBar'
-import CSearchBar from '@/components/CSearchBar'
+import newSong from '@/views/newSong'
+import rank from '@/views/rank'
+import plist from '@/views/plist'
+import singer from '@/views/singer'
+import search from '@/views/search'
 
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
   routes: [
     {
       path: '/',
-      name: 'NewSong',
-      components:{
-        default: NewSong,
-        nav: CNavBar
+      name: 'new-song',
+      component: newSong,
+      meta: {
+        title: '新歌'
       }
     },
     {
       path: '/rank',
-      name: 'Rank',
-      components:{
-        default: Rank,
-        nav: CNavBar
+      name: 'rank',
+      component: rank,
+      meta: {
+        title: '排行'
       }
     },
     {
       path: '/plist',
-      name: 'Plist',
-      components:{
-        default: Plist,
-        nav: CNavBar
+      name: 'plist',
+      component: plist,
+      meta: {
+        title: '歌单'
       }
     },
     {
       path: '/singer',
-      name: 'Singer',
-      components:{
-        default: Singer,
-        nav: CNavBar
+      name: 'singer',
+      components: singer,
+      meta: {
+        title: '歌手'
       }
     },
     {
       path: '/search',
-      name: 'Search',
-      components:{
-        default: Search,
-        search: CSearchBar
-      }
+      name: 'search',
+      components: search
     }
   ]
 })
