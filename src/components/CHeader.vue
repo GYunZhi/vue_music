@@ -1,6 +1,5 @@
 <template>
-  <div class="new-song">
-    新歌
+  <div class="header">
     <mt-header title="long long long long title">
       <router-link to="/" slot="left">
         <mt-button icon="back">back</mt-button>
@@ -11,13 +10,12 @@
 </template>
 
 <script>
+import { Header } from 'mint-ui'
 export default {
+  name: 'header'
 }
 </script>
 
 <style lang="less">
-body {
-  // font-size: 50px;
-}
 </style>
 
