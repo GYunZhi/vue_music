@@ -5,7 +5,7 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import VueAxios from 'vue-axios'
 import http from './http'
-// import { flexible } from '@/utils/tools'
+import { flexible } from '@/utils/tools'
 // import 'lib-flexible/flexible'
 
 Vue.use(VueAxios, http)
@@ -13,7 +13,7 @@ Vue.use(VueAxios, http)
 Vue.use(MintUI)
 
 router.beforeEach((to, from, next) => {
-  // flexible()
+  flexible()
   next()
 })
 

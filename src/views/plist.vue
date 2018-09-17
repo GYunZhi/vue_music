@@ -1,12 +1,12 @@
 <template>
-  <div class="new-song">
+  <div class="plist">
     <div>歌单</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NewSong',
+  name: 'plist',
   data () {
     return {
 

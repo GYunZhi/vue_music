@@ -1,12 +1,12 @@
 <template>
-  <div class="new-song">
+  <div class="singer">
     <div>歌手</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NewSong',
+  name: 'singer',
   data () {
     return {
 
