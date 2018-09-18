@@ -1,5 +1,5 @@
 <template>
-  <mt-header>
+  <mt-header :fixed="true">
     <router-link class="logo" to="/" slot="left">
       <img src="../assets/images/logo.png" alt="">
     </router-link>
@@ -22,7 +22,6 @@ export default {
   display: inline-block;
   width: 1.32rem;
   height: 0.3rem;
-  // background: url('../assets/images/logo.png') no-repeat center center;
   img {
     width: 100%;
     height: 100%;
@@ -32,6 +31,9 @@ export default {
   display: inline-block;
   width: 100%;
   height: 100%;
+  i {
+    color: #fff;
+  }
 }
 .mint-header {
   height: 0.58rem;

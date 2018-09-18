@@ -1,5 +1,17 @@
 @import './reset.css';
 
+/*实现兼容性良好的头部固定，也可用固定定位实现*/
+// html {
+//   width: 100%;
+//   height: 100%;
+//   overflow: hidden;
+// }
+// body {
+//   width: 100%;
+//   height: 100%;
+//   overflow: auto;
+// }
+
 /* 清理浮动 */
 .clearfix:after {
   visibility: hidden;
@@ -42,4 +54,8 @@
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   word-break: break-all;
+}
+
+.container {
+  padding-top: 1.12rem;
 }

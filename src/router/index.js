@@ -38,7 +38,7 @@ export default new Router({
     {
       path: '/singer',
       name: 'singer',
-      components: singer,
+      component: singer,
       meta: {
         title: '歌手'
       }
@@ -46,7 +46,10 @@ export default new Router({
     {
       path: '/search',
       name: 'search',
-      components: search
-    }
+      component: search,
+      meta: {
+        title: '搜索'
+      }
+    },
   ]
 })

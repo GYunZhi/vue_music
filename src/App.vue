@@ -2,7 +2,9 @@
   <div id="app">
     <c-header></c-header>
     <c-nav-bar></c-nav-bar>
-    <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
 

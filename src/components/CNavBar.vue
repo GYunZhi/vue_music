@@ -1,5 +1,5 @@
 <template>
-  <mt-navbar v-model="selected">
+  <mt-navbar v-model="selected" :fixed="true">
     <mt-tab-item id="1">
       <router-link :to="{name: 'new-song'}">新歌</router-link>
     </mt-tab-item>
@@ -28,10 +28,14 @@ export default {
 
 <style lang="less">
 .mint-navbar {
+  height: 0.54rem;
   padding: 0 0.15rem;
 }
 .mint-tab-item-label {
   font-size: 0.2rem;
+}
+.mint-navbar.is-fixed {
+  top: 0.58rem;
 }
 </style>
 
