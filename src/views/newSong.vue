@@ -1,18 +1,74 @@
 <template>
   <div class="new-song">
-    新歌
+    <c-nav-bar></c-nav-bar>
+    <mt-swipe :auto="5000">
+			<mt-swipe-item v-for="item in bannerList" :key="item.id">
+				<a :href="item.extra.tourl" target="_blank">
+					<img :src="item.imgurl" :title="item.title">
+				</a>
+			</mt-swipe-item>
+		</mt-swipe>
+		<div class="song-list">
+      <mt-cell
+        v-for="(item, index) in songList"
+        :title="item.filename"
+        @click.native="playAudio(index)"
+        :key="index"
+      >
+        <img src="../assets/images/download_icon.png" width="20" height="20">
+      </mt-cell>
+    </div>
   </div>
 </template>
-
 <script>
+import { Indicator } from 'mint-ui'
 export default {
-  naem: 'new-song'
+  naem: 'new-song',
+  data(){
+    return {
+      bannerList: [],
+      songList: []
+    }
+  },
+  created () {
+    this.getSongs()
+  },
+  methods: {
+    getSongs () {
+      Indicator.open({
+        text: '加载中...',
+        spinnerType: 'snake'
+      });
+      this.$http.get('/?json=true').then(({data}) => {
+        this.bannerList = data.banner
+        this.songList = data.data
+      }).then(() => {
+        Indicator.close()
+      })
+    },
+  }
 }
 </script>
-
 <style lang="less">
-body {
-  // font-size: 50px;
+.new-song {
+  .mint-swipe {
+    height: 154px !important;
+    // 处理闪烁问题
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+  .mint-swipe img {
+    width: 100%;
+    height: 100%;
+  }
+	.mint-swipe-indicator {
+		width: 12px !important;
+		height: 12px !important;
+	}
+
+	.mint-swipe-indicators {
+		bottom: 5px !important;
+	}
 }
 </style>
 

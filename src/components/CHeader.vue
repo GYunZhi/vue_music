@@ -1,14 +1,16 @@
 <template>
-  <mt-header :fixed="true">
-    <router-link class="logo" to="/" slot="left">
-      <img src="../assets/images/logo.png" alt="">
-    </router-link>
-    <!-- <mt-button icon="search" slot="right"> -->
-    <router-link class="search" slot="right" :to="{name: 'search'}">
-      <i class="iconfont icon-unie036"></i>
-    </router-link>
-    <!-- </mt-button> -->
-  </mt-header>
+  <div class="header-wrap">
+    <mt-header fixed>
+      <router-link class="logo" to="/" slot="left">
+        <img src="../assets/images/logo.png" alt="">
+      </router-link>
+      <!-- <mt-button icon="search" slot="right"> -->
+      <router-link class="search" slot="right" :to="{name: 'search'}">
+        <i class="iconfont icon-unie036"></i>
+      </router-link>
+      <!-- </mt-button> -->
+    </mt-header>
+  </div>
 </template>
 
 <script>
@@ -18,28 +20,31 @@ export default {
 </script>
 
 <style lang="less">
-.logo {
-  display: inline-block;
-  width: 1.32rem;
-  height: 0.3rem;
-  img {
+.header-wrap {
+  height: 57px;
+  .logo {
+    display: inline-block;
+    width: 2.64rem;
+    height: 0.6rem;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .search {
+    display: inline-block;
     width: 100%;
     height: 100%;
+    i {
+      color: #fff;
+    }
   }
-}
-.search {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  i {
-    color: #fff;
-  }
-}
-.mint-header {
-  height: 0.58rem;
-  padding: 0 0.15rem;
-  i {
-    font-size: 0.26rem;
+  .mint-header {
+    height: 58px;
+    padding: 0 0.3rem;
+    i {
+      font-size: 26px;
+    }
   }
 }
 </style>

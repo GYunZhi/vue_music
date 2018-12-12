@@ -9,6 +9,11 @@ import search from '@/views/search'
 
 Vue.use(Router)
 
+const redirect = {
+  path: '*',
+  redirect: '/'
+}
+
 export default new Router({
   routes: [
     {
@@ -51,5 +56,6 @@ export default new Router({
         title: '搜索'
       }
     },
+    redirect
   ]
 })

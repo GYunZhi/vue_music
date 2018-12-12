@@ -5,17 +5,13 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import VueAxios from 'vue-axios'
 import http from './http'
-import { flexible } from '@/utils/tools'
-// import 'lib-flexible/flexible'
-
-Vue.use(VueAxios, http)
+import CNavBar from '@/components/CNavBar'
+import CTitleHead from '@/components/CTitleHead'
 
 Vue.use(MintUI)
-
-router.beforeEach((to, from, next) => {
-  flexible()
-  next()
-})
+Vue.use(VueAxios, http)
+Vue.component('c-nav-bar', CNavBar)
+Vue.component('c-title-head', CTitleHead)
 
 Vue.config.productionTip = false
 
