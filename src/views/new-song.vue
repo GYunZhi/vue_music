@@ -23,9 +23,10 @@
 <script>
 import { Indicator } from 'mint-ui'
 export default {
-  naem: 'new-song',
+  name: 'new-song',
   data(){
     return {
+      bgColor: 'linear-gradient(top,rgba(0,0,0,.6),rgba(0,0,0,0))',
       bannerList: [],
       songList: []
     }
@@ -52,8 +53,8 @@ export default {
 <style lang="less">
 .new-song {
   .mint-swipe {
-    height: 154px !important;
-    // 处理闪烁问题
+    height: 154px!important;
+    // 处理轮播图切换时闪烁问题
     backface-visibility: hidden;
     transform-style: preserve-3d;
   }
@@ -62,13 +63,15 @@ export default {
     height: 100%;
   }
 	.mint-swipe-indicator {
-		width: 12px !important;
-		height: 12px !important;
+		width: 12px!important;
+		height: 12px!important;
 	}
-
 	.mint-swipe-indicators {
-		bottom: 5px !important;
-	}
+		bottom: 5px!important;
+  }
+  .mint-cell {
+    min-height: 52px!important;
+  }
 }
 </style>
 

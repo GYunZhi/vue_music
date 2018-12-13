@@ -2,7 +2,7 @@
   <div class="search">
     <c-title-head></c-title-head>
     <!-- <mt-header title="搜索" fixed></mt-header> -->
-    <div>搜索</div>
+    <div v-for="item in 200" :key="item">搜索</div>
   </div>
 </template>
 

@@ -16,7 +16,6 @@ const instance = axios.create({
 
 // 添加响应拦截器
 instance.interceptors.response.use(response => {
-  console.log('88888888', response)
   return response
 }, error => {
   if (error.message === 'Network Error') {

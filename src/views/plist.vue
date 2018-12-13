@@ -4,7 +4,7 @@
     <div class="plist-list">
       <div class="plist-item" v-for="(item,index) in plistList" :key="index">
         <mt-cell
-          :to="`/plist/info/${item.specialid}`"
+          :to="`/plist-detail/${item.specialid}`"
           is-link
           >
           <img slot="icon" :src="item.imgurl.replace('{size}', '400')">
@@ -84,6 +84,9 @@
     margin-right: 28px;
     width: 96px;
     height: 96px;
+  }
+  .mint-cell-value.is-link {
+    margin-right: 42px;
   }
 }
 </style>
