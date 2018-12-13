@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import newSong from '@/views/newSong'
+import newSong from '@/views/new-song'
 import rank from '@/views/rank'
 import plist from '@/views/plist'
 import singer from '@/views/singer'

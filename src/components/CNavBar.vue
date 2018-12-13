@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'cnavbar',
+  name: 'c-navbar',
   props: {
     type: {
       default: '新歌'
