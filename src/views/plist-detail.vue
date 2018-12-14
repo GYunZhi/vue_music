@@ -1,6 +1,13 @@
 <template>
   <div class="plist-detail">
-    <c-title-head></c-title-head>
+    <c-title-head
+      :title="desc"
+      :bgColor="bg"
+      :color="'#fff'">
+    </c-title-head>
+    <div class="img-box">
+			<img :src="imgurl">
+		</div>
 		<div class="plist-detail-list">
       <mt-cell
         v-for="(item, index) in plistDetailList"
@@ -19,7 +26,10 @@ export default {
   name: 'plist-detail',
   data(){
     return {
-      bannerList: [],
+      bg: '-webkit-linear-gradient(top,rgba(0,0,0,.6),rgba(0,0,0,0))',
+      desc: '',
+      imgurl: '',
+      bannerInfo: null,
       plistDetailList: []
     }
   },
@@ -34,8 +44,9 @@ export default {
         spinnerType: 'snake'
       });
       this.$http.get(`/plist/list/${id}?json=true`).then(({data}) => {
-        console.log(data)
-        // this.bannerList = data.banner
+        this.desc = data.info.list.specialname
+        // 处理图片链接
+        this.imgurl = data.info.list.imgurl.replace('{size}', '400')
         this.plistDetailList = data.list.list.info
       }).then(() => {
         Indicator.close()
@@ -46,6 +57,14 @@ export default {
 </script>
 <style lang="less">
 .plist-detail {
+  .img-box {
+    width: 100%;
+    height: 256px;
+    overflow: hidden;
+    img {
+      margin-top: -75px;
+    }
+  }
   .mint-cell {
     min-height: 52px!important;
   }

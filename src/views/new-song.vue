@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import { Indicator } from 'mint-ui'
+import { Indicator, Swipe, SwipeItem  } from 'mint-ui'
 export default {
   name: 'new-song',
   data(){
@@ -47,6 +47,10 @@ export default {
         Indicator.close()
       })
     },
+  },
+  components: {
+   [Swipe.name]: Swipe,
+   [SwipeItem.name]: SwipeItem
   }
 }
 </script>

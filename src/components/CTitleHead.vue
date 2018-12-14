@@ -1,8 +1,8 @@
 <template>
-  <div class="c-title-head-wrap" :style="{background: bgColor, color}">
-    <div class="c-title-head">
+  <div class="c-title-head-wrap">
+    <div class="c-title-head" :style="{background: bgColor, color}">
       <p class="back" @click="goBack"><i class="iconfont icon-xiangzuo"></i></p>
-      <p class="title">{{title}}</p>
+      <p class="title ellipsis">{{title}}</p>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     },
     color: {
       type: String,
-      default: '#000'
+      default: '#333'
     }
   },
   methods: {
@@ -39,12 +39,16 @@ export default {
 .c-title-head {
   position: fixed;
   left: 0;
-  top: 54px;
+  top: 58px;
+  display: flex;
+  justify-content: center;
   width: 100%;
+  z-index: 100;
   .back, .title {
+    height: 54px;
     line-height: 54px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
   }
   .back {
     width: 48px;
@@ -56,8 +60,7 @@ export default {
     }
   }
   .title {
-    float: left;
-    width: 100%;
+    width: 80%;
   }
 }
 </style>

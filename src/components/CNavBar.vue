@@ -1,25 +1,18 @@
 <template>
   <div class="nav-bar-wrap">
     <mt-navbar v-model="selected" fixed>
-      <mt-tab-item id="新歌">
-        <router-link :to="{name: 'new-song'}">新歌</router-link>
-      </mt-tab-item>
-      <mt-tab-item id="排行">
-        <router-link :to="{name: 'rank'}">排行</router-link>
-      </mt-tab-item>
-      <mt-tab-item id="歌单">
-        <router-link :to="{name: 'plist'}">歌单</router-link>
-      </mt-tab-item>
-      <mt-tab-item id="歌手">
-        <router-link :to="{name: 'singer'}">歌手</router-link>
-      </mt-tab-item>
+      <mt-tab-item id="新歌"  @click.native="handleRoute('新歌')">新歌</mt-tab-item>
+      <mt-tab-item id="排行"  @click.native="handleRoute('排行')">排行</mt-tab-item>
+      <mt-tab-item id="歌单"  @click.native="handleRoute('歌单')">歌单</mt-tab-item>
+      <mt-tab-item id="歌手"  @click.native="handleRoute('歌手')">歌手</mt-tab-item>
     </mt-navbar>
   </div>
 </template>
 
 <script>
+import { Navbar, TabItem } from 'mint-ui'
 export default {
-  name: 'c-navbar',
+  name: 'c-nav-bar',
   props: {
     type: {
       default: '新歌'
@@ -29,6 +22,28 @@ export default {
     return {
       selected: this.type
     }
+  },
+  methods: {
+    handleRoute (value) {
+      switch (value) {
+        case '新歌':
+          this.$router.push({name: 'new-song'})
+          break
+        case '排行':
+          this.$router.push({name: 'rank'})
+          break
+        case '歌单':
+          this.$router.push({name: 'plist'})
+          break
+        case '歌手':
+          this.$router.push({name: 'singer'})
+          break
+      }
+    }
+  },
+  components: {
+    [Navbar.name]: Navbar,
+    [TabItem.name]: TabItem
   }
 }
 </script>

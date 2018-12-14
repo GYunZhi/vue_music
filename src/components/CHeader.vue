@@ -4,24 +4,26 @@
       <router-link class="logo" to="/" slot="left">
         <img src="../assets/images/logo.png" alt="">
       </router-link>
-      <!-- <mt-button icon="search" slot="right"> -->
       <router-link class="search" slot="right" :to="{name: 'search'}">
         <i class="iconfont icon-unie036"></i>
       </router-link>
-      <!-- </mt-button> -->
     </mt-header>
   </div>
 </template>
 
 <script>
+import { Header } from 'mint-ui';
 export default {
-  name: 'c-header'
+  name: 'c-header',
+  components: {
+    [ Header.name]: Header
+  }
 }
 </script>
 
 <style lang="less">
 .header-wrap {
-  height: 57px;
+  height: 58px;
   .logo {
     display: inline-block;
     width: 2.64rem;

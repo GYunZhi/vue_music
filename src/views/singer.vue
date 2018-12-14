@@ -6,8 +6,7 @@
         <mt-cell
           :title="item.classname"
           :to="`/singer/info/${item.classid}`"
-          is-link
-          >
+          is-link>
         </mt-cell>
       </div>
     </div>
@@ -32,9 +31,9 @@ export default {
 					text: '加载中...',
 					spinnerType: 'snake'
 				});
-				this.$http.get('/singer/class&json=true').then((resp) => {
+				this.$http.get('/singer/class&json=true').then(({data}) => {
 					Indicator.close();
-					this.singerList = resp.data.list
+					this.singerList = data.list
 				});
 			}
 		}
