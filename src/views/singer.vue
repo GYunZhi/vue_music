@@ -5,7 +5,7 @@
       <div class="singer-item" v-for="(item,index) in singerList" :key="index">
         <mt-cell
           :title="item.classname"
-          :to="`/singer/info/${item.classid}`"
+          :to="{name: 'singer-list', params: {id: item.classid, title: item.classname}}"
           is-link>
         </mt-cell>
       </div>
@@ -32,9 +32,10 @@ export default {
 					spinnerType: 'snake'
 				});
 				this.$http.get('/singer/class&json=true').then(({data}) => {
-					Indicator.close();
 					this.singerList = data.list
-				});
+				}).then(() => {
+          Indicator.close()
+        })
 			}
 		}
 }

@@ -37,9 +37,10 @@
 					spinnerType: 'snake'
 				});
 				this.$http.get('/plist/index&json=true').then((resp) => {
-          Indicator.close();
 					this.plistList = resp.data.plist.list.info
-				});
+				}).then(() => {
+          Indicator.close()
+        })
 			}
 		}
 	}

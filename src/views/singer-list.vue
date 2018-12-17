@@ -1,11 +1,11 @@
 <template>
-  <div class="rank">
-    <c-nav-bar type="排行"></c-nav-bar>
-    <div class="rank-list">
-      <div class="rank-item" v-for="(item,index) in rankList" :key="index">
+  <div class="singer">
+    <c-title-head :title="title" :height="54"/>
+    <div class="singer-list">
+      <div class="singer-item" v-for="(item,index) in singerList" :key="index">
         <mt-cell
-          :title="item.rankname"
-          :to="`/rank-detail/${item.rankid}`"
+          :title="item.singername"
+          :to="{name: 'singer-detail', params: {id: item.singerid, title: item.singername}}"
           is-link
           >
           <img slot="icon" :src="item.imgurl.replace('{size}', '400')">
@@ -18,23 +18,29 @@
 <script>
 import { Indicator } from 'mint-ui'
 export default {
-  name: 'rank',
+  name: 'singer-list',
   data(){
     return {
-      rankList: []
+      singerList: []
     }
   },
   mounted () {
     this.getList()
   },
+  computed: {
+    title () {
+      return this.$route.params.title
+    }
+  },
   methods: {
     getList () {
+      let id = this.$route.params.id
       Indicator.open({
         text: '加载中...',
         spinnerType: 'snake'
       });
-      this.$http.get('/rank/list&json=true').then(({data}) => {
-        this.rankList = data.rank.list
+      this.$http.get(`/singer/list/${id}&json=true`).then(({data}) => {
+        this.singerList = data.singers.list.info
       }).then(() => {
         Indicator.close()
       })
@@ -43,10 +49,10 @@ export default {
 }
 </script>
 <style lang="less">
-.rank{
-  .rank-list {
+.singer{
+  .singer-list {
     padding: 10px 0;
-    .rank-item {
+    .singer-item {
       padding: 10px 0;
       margin-left: 16px;
       border-bottom: 1px solid #e5e5e5;

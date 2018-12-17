@@ -1,5 +1,5 @@
 <template>
-  <div class="c-title-head-wrap">
+  <div class="c-title-head-wrap" :style="{height: height + 'px'}">
     <div class="c-title-head" :style="{background: bgColor, color}">
       <p class="back" @click="goBack"><i class="iconfont icon-xiangzuo"></i></p>
       <p class="title ellipsis">{{title}}</p>
@@ -22,6 +22,10 @@ export default {
     color: {
       type: String,
       default: '#333'
+    },
+    height: {
+      type: Number,
+      default: 0
     }
   },
   methods: {
@@ -34,7 +38,7 @@ export default {
 
 <style lang="less" scoped>
 .c-title-head-wrap {
-  height: 54px;
+  // height: 54px;
 }
 .c-title-head {
   position: fixed;
@@ -48,7 +52,7 @@ export default {
     height: 54px;
     line-height: 54px;
     text-align: center;
-    font-size: 16px;
+    font-size: 17px;
   }
   .back {
     width: 48px;

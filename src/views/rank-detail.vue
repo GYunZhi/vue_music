@@ -1,17 +1,17 @@
 <template>
-  <div class="plist-detail">
+  <div class="rank-detail">
     <c-title-head
-      :title="desc"
+      :title="rankname"
       :bgColor="bg"
       :color="'#fff'">
     </c-title-head>
     <div class="img-box">
 			<img :src="imgurl">
+      <p class="rank-info-time">上次更新时间：{{getToday()}}</p>
 		</div>
-		<div class="plist-detail-list">
-      <c-toggle>{{intro}}</c-toggle>
+		<div class="rank-detail-list">
       <mt-cell
-        v-for="(item, index) in plistDetailList"
+        v-for="(item, index) in songsDetailList"
         :title="item.filename"
         @click.native="playAudio(index)"
         :key="index"
@@ -23,46 +23,50 @@
 </template>
 <script>
 import { Indicator } from 'mint-ui'
-import CToggle from '@/components/CToggle'
 export default {
-  name: 'plist-detail',
+  name: 'rank-detail',
   data(){
     return {
       bg: '-webkit-linear-gradient(top,rgba(0,0,0,.6),rgba(0,0,0,0))',
-      desc: '',
-      intro: '',
+      rankname: '',
+      time: '',
       imgurl: '',
-      plistDetailList: []
+      songsDetailList: []
     }
   },
   created () {
-    this.getPlistDetail()
+    this.getRankDetail()
   },
   methods: {
-    getPlistDetail () {
+    getRankDetail () {
       let id = this.$route.params.id
       Indicator.open({
         text: '加载中...',
         spinnerType: 'snake'
       });
-      this.$http.get(`/plist/list/${id}?json=true`).then(({data}) => {
-        this.desc = data.info.list.specialname
-        this.intro = data.info.list.intro
+      this.$http.get(`/rank/info/${id}?json=true`).then(({data}) => {
+        this.rankname = data.info.rankname
         // 处理图片链接
-        this.imgurl = data.info.list.imgurl.replace('{size}', '400')
-        this.plistDetailList = data.list.list.info
+        this.imgurl = data.info.imgurl.replace('{size}', '400')
+        this.songsDetailList = data.songs.list
       }).then(() => {
         Indicator.close()
       })
+    },
+    getToday () {
+      const time = new Date()
+      const year = time.getFullYear()
+      let month = time.getMonth() + 1
+      let date = time.getDate()
+      if(month < 10) month = '0' + month
+      if(date < 10) date = '0' + date
+      return `${year}-${month}-${date}`
     }
-  },
-  components: {
-    CToggle
   }
 }
 </script>
 <style lang="less">
-.plist-detail {
+.rank-detail {
   .img-box {
     position: relative;
     width: 100%;
@@ -70,8 +74,16 @@ export default {
     overflow: hidden;
     img {
       width: 100%;
-      margin-top: -75px;
+      margin-top: -60px;
     }
+  }
+  .rank-info-time {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fafff2;
+    font-size: 18px;
+    z-index: 101;
   }
   .mint-cell {
     min-height: 52px!important;
