@@ -23,7 +23,14 @@ module.exports = {
         headers: { // 设置请求头，模拟手机端发送请求
           'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36'
         }
-      }
+      },
+      '/sproxy': {
+				target: 'http://mobilecdn.kugou.com',
+				changeOrigin: true,
+				pathRewrite: {
+					'^/sproxy': ''
+				}
+			}
     },
 
     // Various Dev Server settings

@@ -51,7 +51,7 @@ export default {
         // 处理图片链接
         this.imgurl = data.info.list.imgurl.replace('{size}', '400')
         this.plistDetailList = data.list.list.info
-      }).then(() => {
+      }).finally(() => {
         Indicator.close()
       })
     }

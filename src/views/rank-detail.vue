@@ -53,7 +53,7 @@ export default {
         // 处理图片链接
         this.imgurl = data.info.imgurl.replace('{size}', '400')
         this.songsDetailList = data.songs.list
-      }).then(() => {
+      }).finally(() => {
         Indicator.close()
       })
     },
@@ -117,7 +117,6 @@ export default {
   .mint-cell {
     min-height: 52px!important;
     padding: 4px 0;
-    border-bottom: 1px solid #e5e5e5;
   }
   .mint-cell-title {
     padding: 0 0.12rem 0 0.48rem;

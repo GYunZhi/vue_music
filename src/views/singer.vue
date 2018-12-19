@@ -33,7 +33,7 @@ export default {
 				});
 				this.$http.get('/singer/class&json=true').then(({data}) => {
 					this.singerList = data.list
-				}).then(() => {
+				}).finally(() => {
           Indicator.close()
         })
 			}

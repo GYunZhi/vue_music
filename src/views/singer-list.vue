@@ -41,7 +41,7 @@ export default {
       });
       this.$http.get(`/singer/list/${id}&json=true`).then(({data}) => {
         this.singerList = data.singers.list.info
-      }).then(() => {
+      }).finally(() => {
         Indicator.close()
       })
     }

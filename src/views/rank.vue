@@ -35,7 +35,7 @@ export default {
       });
       this.$http.get('/rank/list&json=true').then(({data}) => {
         this.rankList = data.rank.list
-      }).then(() => {
+      }).finally(() => {
         Indicator.close()
       })
     }

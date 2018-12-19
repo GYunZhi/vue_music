@@ -54,7 +54,7 @@ export default {
         // // 处理图片链接
         this.imgurl = data.info.imgurl.replace('{size}', '400')
         this.singerDetailList = data.songs.list
-      }).then(() => {
+      }).finally(() => {
         Indicator.close()
       })
     },

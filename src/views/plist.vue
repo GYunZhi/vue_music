@@ -38,7 +38,7 @@
 				});
 				this.$http.get('/plist/index&json=true').then((resp) => {
 					this.plistList = resp.data.plist.list.info
-				}).then(() => {
+				}).finally(() => {
           Indicator.close()
         })
 			}

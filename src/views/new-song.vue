@@ -43,7 +43,7 @@ export default {
       this.$http.get('/?json=true').then(({data}) => {
         this.bannerList = data.banner
         this.songList = data.data
-      }).then(() => {
+      }).finally(() => {
         Indicator.close()
       })
     },
@@ -75,7 +75,6 @@ export default {
   }
   .mint-cell {
     min-height: 52px!important;
-    border-bottom: 1px solid #e5e5e5;
   }
   .mint-cell-title {
     padding: 0 0.12rem;
