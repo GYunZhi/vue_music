@@ -8,7 +8,7 @@
           :to="`/rank-detail/${item.rankid}`"
           is-link
           >
-          <img slot="icon" :src="item.imgurl.replace('{size}', '400')">
+          <img slot="icon" v-lazy="item.imgurl.replace('{size}', '400')">
         </mt-cell>
       </div>
     </div>

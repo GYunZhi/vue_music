@@ -75,6 +75,12 @@ export default {
   }
   .mint-cell {
     min-height: 52px!important;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .mint-cell-title {
+    padding: 0 0.12rem;
+    line-height: 0.48rem;
+
   }
 }
 </style>

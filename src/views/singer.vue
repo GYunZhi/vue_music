@@ -65,5 +65,8 @@ export default {
     width: 96px;
     height: 96px;
   }
+  .mint-cell-title {
+    padding-left: 0.16rem;
+  }
 }
 </style>

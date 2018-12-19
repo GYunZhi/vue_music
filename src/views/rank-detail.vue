@@ -16,6 +16,10 @@
         @click.native="playAudio(index)"
         :key="index"
       >
+        <span
+        slot="left"
+        :class="['song-item-num', {one: index === 0 }, {two: index === 1 }, {three: index === 2 }]">
+        {{index + 1}}</span>
         <img src="../assets/images/download_icon.png" width="20" height="20">
       </mt-cell>
     </div>
@@ -85,8 +89,40 @@ export default {
     font-size: 18px;
     z-index: 101;
   }
+  .song-item-num {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 28%;
+    left: 5px;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    display: inline-block;
+  }
+  .song-item-num.one {
+    background: #e80000;
+    color: #fff;
+  }
+  .song-item-num.two {
+    background: #e80000;
+    color: #fff;
+  }
+  .song-item-num.three {
+    background: #f8b300;
+    color: #fff;
+  }
   .mint-cell {
     min-height: 52px!important;
+    padding: 4px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .mint-cell-title {
+    padding: 0 0.12rem 0 0.48rem;
+    line-height: 0.48rem;
+
   }
 }
 </style>

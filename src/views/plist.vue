@@ -7,7 +7,7 @@
           :to="`/plist-detail/${item.specialid}`"
           is-link
           >
-          <img slot="icon" :src="item.imgurl.replace('{size}', '400')">
+          <img slot="icon" v-lazy="item.imgurl.replace('{size}', '400')">
           <div class="content">
             <p class="remark">{{item.specialname}}</p>
             <p class="play-count"><i class="iconfont icon-erji"></i> {{item.playcount}}</p>
@@ -55,7 +55,7 @@
       border-bottom: 1px solid #e5e5e5;
     }
     .content {
-      width: 211px;
+      width: 196px;
       height: 96px;
       color: #333;
       text-align: left;

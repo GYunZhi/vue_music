@@ -1,7 +1,7 @@
 <template>
-  <div class="singer">
+  <div class="singer-list">
     <c-title-head :title="title" :height="54"/>
-    <div class="singer-list">
+    <div class="singer-wrap">
       <div class="singer-item" v-for="(item,index) in singerList" :key="index">
         <mt-cell
           :title="item.singername"
@@ -49,8 +49,8 @@ export default {
 }
 </script>
 <style lang="less">
-.singer{
-  .singer-list {
+.singer-list{
+  .singer-wrap {
     padding: 10px 0;
     .singer-item {
       padding: 10px 0;
