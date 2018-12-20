@@ -163,4 +163,8 @@ export default {
   background-color: #e1e1e1;
   color: #484848;
 }
+.mint-cell-title {
+  padding: 0 0.12rem;
+  line-height: 0.48rem;
+}
 </style>
