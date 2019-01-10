@@ -121,7 +121,6 @@ export default {
   .mint-cell-title {
     padding: 0 0.12rem 0 0.48rem;
     line-height: 0.48rem;
-
   }
 }
 </style>
