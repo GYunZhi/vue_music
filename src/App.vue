@@ -2,15 +2,21 @@
   <div id="app">
     <c-header></c-header>
     <router-view/>
+    <c-player></c-player>
+    <c-detail-player></c-detail-player>
   </div>
 </template>
 
 <script>
 import CHeader from '@/components/CHeader'
+import CPlayer from '@/components/CPlayer'
+import CDetailPlayer from './components/CDetailPlayer'
 export default {
   name: 'App',
   components: {
-    CHeader
+    CHeader,
+    CPlayer,
+    CDetailPlayer
   }
 }
 </script>

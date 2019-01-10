@@ -30,6 +30,13 @@ module.exports = {
 				pathRewrite: {
 					'^/sproxy': ''
 				}
+      },
+      '/bproxy': {
+				target: 'http://www.kugou.com',
+				changeOrigin: true,
+				pathRewrite: {
+					'^/bproxy': ''
+				}
 			}
     },
 

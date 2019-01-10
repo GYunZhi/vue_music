@@ -5,6 +5,7 @@ import 'mint-ui/lib/style.css'
 import VueAxios from 'vue-axios'
 import VueLazyload from 'vue-lazyload'
 import http from './http'
+import store from './store'
 import 'normalize.css/normalize.css'
 import { Cell } from 'mint-ui'
 import CNavBar from '@/components/CNavBar'
@@ -30,6 +31,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

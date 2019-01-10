@@ -22,8 +22,10 @@
 </template>
 <script>
 import { Indicator, Swipe, SwipeItem  } from 'mint-ui'
+import { PLAY_AUDIO } from '../mixins'
 export default {
   name: 'new-song',
+  mixins: [PLAY_AUDIO],
   data(){
     return {
       bgColor: 'linear-gradient(top,rgba(0,0,0,.6),rgba(0,0,0,0))',
