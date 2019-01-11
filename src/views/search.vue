@@ -28,7 +28,6 @@
         @click.native="playAudio(index)"
         :key="index"
       >
-        <img src="../assets/images/download_icon.png" width="20" height="20">
       </mt-cell>
     </div>
   </div>
@@ -36,9 +35,11 @@
 
 <script>
 import { Indicator, Toast } from "mint-ui"
+import { PLAY_AUDIO } from '../mixins'
 const jsonp = require('jsonp')
 export default {
   name: "search",
+  mixins: [PLAY_AUDIO],
   data () {
     return {
       keyword: '',

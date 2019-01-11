@@ -11,7 +11,7 @@
 		</div>
 		<div class="rank-detail-list">
       <mt-cell
-        v-for="(item, index) in songsDetailList"
+        v-for="(item, index) in songList"
         :title="item.filename"
         @click.native="playAudio(index)"
         :key="index"
@@ -20,22 +20,23 @@
         slot="left"
         :class="['song-item-num', {one: index === 0 }, {two: index === 1 }, {three: index === 2 }]">
         {{index + 1}}</span>
-        <img src="../assets/images/download_icon.png" width="20" height="20">
       </mt-cell>
     </div>
   </div>
 </template>
 <script>
 import { Indicator } from 'mint-ui'
+import { PLAY_AUDIO } from '../mixins'
 export default {
   name: 'rank-detail',
+  mixins: [PLAY_AUDIO],
   data(){
     return {
       bg: '-webkit-linear-gradient(top,rgba(0,0,0,.6),rgba(0,0,0,0))',
       rankname: '',
       time: '',
       imgurl: '',
-      songsDetailList: []
+      songList: []
     }
   },
   created () {
@@ -52,7 +53,7 @@ export default {
         this.rankname = data.info.rankname
         // 处理图片链接
         this.imgurl = data.info.imgurl.replace('{size}', '400')
-        this.songsDetailList = data.songs.list
+        this.songList = data.songs.list
       }).finally(() => {
         Indicator.close()
       })

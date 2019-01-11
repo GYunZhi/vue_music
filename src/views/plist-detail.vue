@@ -11,12 +11,11 @@
 		<div class="plist-detail-list">
       <c-toggle>{{intro}}</c-toggle>
       <mt-cell
-        v-for="(item, index) in plistDetailList"
+        v-for="(item, index) in songList"
         :title="item.filename"
         @click.native="playAudio(index)"
         :key="index"
       >
-        <img src="../assets/images/download_icon.png" width="20" height="20">
       </mt-cell>
     </div>
   </div>
@@ -24,15 +23,17 @@
 <script>
 import { Indicator } from 'mint-ui'
 import CToggle from '@/components/CToggle'
+import { PLAY_AUDIO } from '../mixins'
 export default {
   name: 'plist-detail',
+  mixins: [PLAY_AUDIO],
   data(){
     return {
       bg: '-webkit-linear-gradient(top,rgba(0,0,0,.6),rgba(0,0,0,0))',
       desc: '',
       intro: '',
       imgurl: '',
-      plistDetailList: []
+      songList: []
     }
   },
   created () {
@@ -50,7 +51,7 @@ export default {
         this.intro = data.info.list.intro
         // 处理图片链接
         this.imgurl = data.info.list.imgurl.replace('{size}', '400')
-        this.plistDetailList = data.list.list.info
+        this.songList = data.list.list.info
       }).finally(() => {
         Indicator.close()
       })

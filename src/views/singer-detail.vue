@@ -11,12 +11,11 @@
 		<div class="singer-detail-list">
       <c-toggle>{{intro}}</c-toggle>
       <mt-cell
-        v-for="(item, index) in singerDetailList"
+        v-for="(item, index) in songList"
         :title="item.filename"
         @click.native="playAudio(index)"
         :key="index"
       >
-        <img src="../assets/images/download_icon.png" width="20" height="20">
       </mt-cell>
     </div>
   </div>
@@ -24,14 +23,16 @@
 <script>
 import { Indicator } from 'mint-ui'
 import CToggle from '@/components/CToggle'
+import { PLAY_AUDIO } from '../mixins'
 export default {
   name: 'singer-detail',
+  mixins: [PLAY_AUDIO],
   data(){
     return {
       bg: '-webkit-linear-gradient(top,rgba(0,0,0,.6),rgba(0,0,0,0))',
       intro: '',
       imgurl: '',
-      singerDetailList: []
+      songList: []
     }
   },
   created () {
@@ -53,7 +54,7 @@ export default {
         this.intro = data.info.intro
         // // 处理图片链接
         this.imgurl = data.info.imgurl.replace('{size}', '400')
-        this.singerDetailList = data.songs.list
+        this.songList = data.songs.list
       }).finally(() => {
         Indicator.close()
       })
