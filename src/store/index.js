@@ -48,27 +48,24 @@ const store = new Vuex.Store({
     setCurrent(state, flag) {
       state.audio.currentFlag = flag
     },
-    toggleAudioLoadding: (state, flag) => {
+    toggleAudioLoadding (state, flag) {
       state.audioLoadding = flag
     },
-    showDetailPlayer: (state, flag) => {
+    showDetailPlayer (state, flag) {
       state.detailPlayerFlag = flag
     },
-    showPlayer: (state, flag) => {
+    showPlayer (state, flag) {
       state.showPlayer = flag
     },
-    isPlay: (state, flag) => {
+    isPlay (state, flag) {
       state.isPlay = flag
     },
-    setLrc: (state, lrc) => {
+    setLrc (state, lrc) {
       state.audio = { ...(state.audio),
         lrc
       }
     },
-    setListInfo: (state, {
-      list,
-      index
-    }) => {
+    setListInfo (state, {list, index}) {
       state.listInfo.songList = list
       state.listInfo.songIndex = index
     }

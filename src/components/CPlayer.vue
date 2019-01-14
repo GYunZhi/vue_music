@@ -1,5 +1,5 @@
 <template>
-  <div class="audio-wrap" :class="{'audio_panel_hide': toggleHide}">
+  <div class="audio-wrap" :class="{'audio_panel_hide': toggleHide}" v-if="showPlayer">
 
     <audio
       id="player"
