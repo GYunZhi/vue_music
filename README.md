@@ -34,7 +34,7 @@ yarn run dev
 
 ### 3. 代理配置
 
-```json
+```javascript
 // 配置代理
 proxyTable: {
   '/proxy': {
