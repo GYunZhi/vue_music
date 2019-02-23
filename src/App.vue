@@ -1,24 +1,32 @@
 <template>
   <div id="app">
-    <mt-header fixed title="固定在顶部"></mt-header>
-    <router-view name="nav"/>
+    <c-header></c-header>
     <router-view/>
+    <c-player></c-player>
+    <c-detail-player></c-detail-player>
   </div>
 </template>
 
 <script>
+import CHeader from '@/components/CHeader'
+import CPlayer from '@/components/CPlayer'
+import CDetailPlayer from './components/CDetailPlayer'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    CHeader,
+    CPlayer,
+    CDetailPlayer
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="less">
+@import 'assets/styles/common.less';
+// 全局样式覆盖
+.mint-cell-allow-right::after {
+  width: 12px;
+  height: 12px;
+  right: 25px;
 }
 </style>
+

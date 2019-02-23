@@ -2,9 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>vue_music</title>
   </head>
+  <script>
+    var tid
+    var docEl = document.documentElement
+    var refreshRem = function () {
+      var clientWidth = docEl.clientWidth < 750 ? docEl.clientWidth : 750
+      var rem = clientWidth / 750
+      docEl.style.fontSize = (rem * 100) + 'px'
+    }
+    window.addEventListener('resize', function () {
+      clearTimeout(tid)
+      tid = setTimeout(refreshRem, 300)
+    }, false)
+    refreshRem()
+  </script>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
