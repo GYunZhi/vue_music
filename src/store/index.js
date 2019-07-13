@@ -33,7 +33,7 @@ const store = new Vuex.Store({
     isPlay: state => state.isPlay
   },
   mutations: {
-    setAudio(state, audio) {
+    setAudio (state, audio) {
       if (!state.listenCount) {
         state.showPlayer = true // 首次进入应用时不可打开播放详情
       }
@@ -42,10 +42,10 @@ const store = new Vuex.Store({
         ...audio
       }
     },
-    setAudioTime(state, time) {
+    setAudioTime (state, time) {
       state.audio.currentLength = time
     },
-    setCurrent(state, flag) {
+    setCurrent (state, flag) {
       state.audio.currentFlag = flag
     },
     toggleAudioLoadding (state, flag) {
@@ -71,17 +71,26 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    getSong({commit, state}, hash) {
+    getSong ({commit, state}, hash) {
       commit('toggleAudioLoadding', true)
-      http.get(`/yy/index.php?r=play/getdata&hash=${hash}`, {baseURL: 'bproxy'}).then(({data}) => {
-        data = data.data
-        const songUrl = data.play_url
-        const imgUrl = data.img
-        const title = data.audio_name
-        const songLength = data.timelength / 1000
-        const singer = data.author_name
-        const currentLength = 0;
-        const lrc = data.lyrics
+      let params = {
+        cmd: 'playInfo',
+        hash: hash,
+        from: 'mkugou',
+        apiver: 2,
+        mid: '115c552b2837817623644e8ef13bd97b',
+        userid: 0,
+        platid: 5,
+        dfid: null
+      }
+      http.get(`/api/v1/song/get_song_info`, { params }).then(({data}) => {
+        const songUrl = data.url
+        const imgUrl = data.imgUrl.replace(`{size}`, 200)
+        const title = data.songName
+        const songLength = data.timeLength
+        const singer = data.singerName
+        const currentLength = 0
+
         const audio = {
           songUrl,
           imgUrl,
@@ -90,14 +99,29 @@ const store = new Vuex.Store({
           songLength,
           currentLength
         }
+
         commit('setAudio', audio)
-        commit('setLrc', lrc)
         commit('toggleAudioLoadding', false)
+
+        // 获取歌词
+        const fileName = data.fileName
+        const lrcParams = {
+          cmd: '100',
+          keyword: fileName,
+          hash: hash,
+          timelength: songLength,
+          d: 0.069002061424569
+        }
+
+        http.get('/app/i/krc.php', {params: lrcParams, responseType: 'text/html'}).then(data => {
+          const lrc = data.data
+          commit('setLrc', lrc)
+        })
       })
     },
-    prev({dispatch, state}) {
+    prev ({dispatch, state}) {
       var list = state.listInfo.songList
-      if (state.listInfo.songIndex == 0) {
+      if (state.listInfo.songIndex === 0) {
         state.listInfo.songIndex = list.length
       } else {
         state.listInfo.songIndex--
@@ -105,9 +129,9 @@ const store = new Vuex.Store({
       var hash = list[state.listInfo.songIndex].hash
       dispatch('getSong', hash)
     },
-    next({dispatch, state}) {
+    next ({dispatch, state}) {
       var list = state.listInfo.songList
-      if (state.listInfo.songIndex == list.length - 1) {
+      if (state.listInfo.songIndex === list.length - 1) {
         state.listInfo.songIndex = 0
       } else {
         ++state.listInfo.songIndex

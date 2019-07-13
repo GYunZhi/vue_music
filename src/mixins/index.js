@@ -1,6 +1,6 @@
 module.exports = {
   'PLAY_AUDIO': {
-    methods:{
+    methods: {
       playAudio (index) {
         var hash = this.songList[index].hash
         var info = {
@@ -9,7 +9,7 @@ module.exports = {
         }
         this.$store.commit('setListInfo', info)
         this.$store.dispatch('getSong', hash)
-        this.$store.commit("isPlay", true)
+        this.$store.commit('isPlay', true)
       }
     }
   }

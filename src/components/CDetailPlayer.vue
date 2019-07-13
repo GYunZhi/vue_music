@@ -274,6 +274,7 @@ export default {
 .lrc-content {
   transition: all 0.5s;
   transform: translateZ(0);
+  font-size: 15px;
 }
 .lrc-content .isCurrentLrc{
   color: #fff;

@@ -25,19 +25,19 @@ module.exports = {
         }
       },
       '/sproxy': {
-				target: 'http://mobilecdn.kugou.com',
-				changeOrigin: true,
-				pathRewrite: {
-					'^/sproxy': ''
-				}
+        target: 'http://mobilecdn.kugou.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/sproxy': ''
+        }
       },
       '/bproxy': {
-				target: 'http://www.kugou.com',
-				changeOrigin: true,
-				pathRewrite: {
-					'^/bproxy': ''
-				}
-			}
+        target: 'http://www.kugou.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/bproxy': ''
+        }
+      }
     },
 
     // Various Dev Server settings
