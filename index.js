@@ -4,7 +4,7 @@ const proxy = require('http-proxy-middleware')
 
 const app = express()
 
-app.use(express.static(path.resolve(__dirname, './public')))
+app.get('/', express.static(path.resolve(__dirname, './public')))
 
 app.use('/proxy', proxy({
   target: 'http://m.kugou.com', // 当匹配到/proxy/rank/list?json=true时，会把/proxy替换成http://m.kugou.com/rank/list?json=true
