@@ -1,14 +1,9 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "public/", "use": "@now/static" 
-    },
     { 
       "src": "index.js", "use": "@now/node-server" 
     }
   ],
-  "routes": [
-		{ "src": "/", "dest": "public/index.html" }
-	]
+  "routes": [{"src": "/.*", "dest": "index.js"}]
 }
