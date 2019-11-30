@@ -3,7 +3,7 @@ import { Toast } from 'mint-ui'
 
 // 使用自定义配置 创建一个 axios 实例
 const instance = axios.create({
-  baseURL: '/',
+  baseURL: '/proxy',
   responseType: 'json',
   timeout: 1000 * 20,
   headers: {
