@@ -1,27 +1,8 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "package.json",
-      "use": "@now/static-build",
-      "config": { "distDir": "public" }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/proxy?json=true",
-      "headers": { 
-        "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36" 
-      },
-      "dest": "http://m.kugou.com/?json=true"
-    },
-    {
-      "src": "/sproxy",
-      "dest": "http://mobilecdn.kugou.com/"
-    },
-    {
-      "src": "/bproxy",
-      "dest": "http://www.kugou.com/"
+    { 
+      "src": "index.js", "use": "@now/node-server" 
     }
   ]
 }
