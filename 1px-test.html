@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>1px 测试</title>
+  <meta name="viewport" content="width=device-width">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=no"> -->
+</head>
+<body>
+  <div class="item item-1px">列表1</div>
+  <div class="item item-0_5px">列表2</div>
+  <div class="item item-css3transform">列表3</div>
+  <div class="item item-shadow">列表4</div>
+  <div class="item item-background">列表5</div>
+  <div class="item item-4-border">列表6</div>
+
+  
+  <style>
+  
+    .item {
+      padding: 10px 0
+    }
+    
+    .item-1px {
+      border-bottom: 1px solid #ccc;
+    }
+    
+    .item-0_5px {
+      border-bottom: .5px solid #ccc;
+      /*ios有效 android无效*/
+    }
+    
+    .item-css3transform::after {
+      content: '';
+      display: block;
+      height: 1px;
+      transform: scaleY(0.5);
+      background: #ccc;
+      position: relative;
+      top: 10px;
+    }
+    
+    .item-shadow {
+      box-shadow: 0 0.5px 0 0 #ccc;
+    }
+    
+    .item-background::after {
+      display: block;
+      content: '';
+      height: 1px;
+      background: linear-gradient(0deg, #ccc 50%, transparent 50%);
+      position: relative;
+      top: 10px;
+    }
+    
+    .item-4-border {
+      margin: 10px 0;
+      padding: 10px;
+      background: linear-gradient(to bottom, #ccc .5px, transparent 0), linear-gradient(to left, #ccc .5px, transparent 0), linear-gradient(to right, #ccc .5px, transparent 0), linear-gradient(to top, #ccc .5px, transparent 0);
+    }
+  </style>
+</body>
+</html>
